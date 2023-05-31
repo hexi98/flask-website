@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>2023Chinavis</title>
+    <script src="./static/js/main.js"></script>
     <link rel="apple-touch-icon" sizes="76x76" href="./static/images/favicon.ico">
     <link rel="icon" type="image/png" href="./static/imagesfavicon.ico">
     <!-- Google Font -->
@@ -15,17 +16,19 @@
     <link href="./static/css/main.css" rel="stylesheet"/>
         
     <!-- Animation CSS -->
-    <link href="./static/css/vendor/aos.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/style.css') }}" type="text/css">
+    <!-- <link href="./static/css/vendor/aos.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/css/style.css') }}" type="text/css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script language="javascript">
-        function callPythonAPI(){
-            const data = ["钟山","青溪","石头城","三山","新亭","凤凰台","乌衣巷","白鹭洲","玄武湖","冶城","雨花台","方山","朱雀桥","秦淮河","东山","摄山","牛首山","中华门","桃叶渡","长干里","覆舟山","莫愁湖","景阳楼","瓦官寺","光宅寺","新街口","新林浦","清凉寺","燕子矶","劳劳亭","随园","八功德水","中山门","内桥","北门桥","杏花村","谢公墩","半山园","挹江门","麾扇渡","中山路","大行宫","状元境","饮马巷","大王府巷","泥马巷","金銮巷","落星岗","白门"]
-            fetch('http://127.0.0.1:5000/test',{
+        // var loactionNames = ["钟山","青溪","石头城","三山","新亭","凤凰台","乌衣巷","白鹭洲","玄武湖","冶城","雨花台","方山","朱雀桥","秦淮河","东山","摄山","牛首山","中华门","桃叶渡","长干里","覆舟山","莫愁湖","景阳楼","瓦官寺","光宅寺","新街口","新林浦","清凉寺","燕子矶","劳劳亭","随园","八功德水","中山门","内桥","北门桥","杏花村","谢公墩","半山园","挹江门","麾扇渡","中山路","大行宫","状元境","饮马巷","大王府巷","泥马巷","金銮巷","落星岗","白门"]
+
+        function callPythonAPI(data){
+            document.getElementById("generate-peom").innerHTML = "诗词生成中..."
+            fetch('http://127.0.0.1:5000/test/'+data ,{
                 method:'POST',
-                // headers: {
-                //     'Content-Type': 'application/json'
-                // },
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(data)
             })
             .then(respose =>respose.json())
@@ -185,7 +188,9 @@
         <!--- END HEADER -->
         <div class="get-poem bg-head">
             <!-- <button onclick="exec1('python3.11 /Users/hexi/Desktop/2023Chinavis/Flask-website/test.py')">调用诗词生成</button> -->
-            <button onclick="callPythonAPI()">调用诗词生成</button>
+            {% for location_name in locationNames %}
+                <button onclick="callPythonAPI(value)" value={{location_name}}> {{location_name}}</button>
+            {% endfor %}
         </div>
         <div id="generate-peom"></div>
             
@@ -220,33 +225,7 @@
         });
         </script>
             
-        <!-- Carousel Height Smooth -->
-        <script>    
-            $('.carousel').on('slide.bs.carousel', function (event) {
-              var height = $(event.relatedTarget).height();
-              var $innerCarousel = $(event.target).find('.carousel-inner');
-              $innerCarousel.animate({
-                height: height
-              });
-            });
-            </script>
-            
-        <!-- Popovers -->
-        <script>
-            $(function () {
-              $('[data-toggle="popover"]').popover()
-            })
-            $('.popover-dismiss').popover({
-              trigger: 'focus'
-            })
-            </script>
-            
-        <!-- Tooltips -->
-        <script>
-            $(function () {
-              $('[data-toggle="tooltip"]').tooltip()
-            })
-        </script>
+       
             
         </body>
 </body>
