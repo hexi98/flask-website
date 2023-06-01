@@ -58,7 +58,8 @@ sqlparse==0.4.4
 starkbank-ecdsa==2.2.0
 # sympy @ file:///home/conda/feedstock_root/build_artifacts/sympy_1684180540116/work
 sympy==1.12
-torch @ file:///Users/runner/miniforge3/conda-bld/pytorch-recipe_1680607563975/work
+# torch @ file:///Users/runner/miniforge3/conda-bld/pytorch-recipe_1680607563975/work
+torch==2.0.0
 torchnet==0.0.4
 tornado==6.3.2
 tqdm==4.65.0
