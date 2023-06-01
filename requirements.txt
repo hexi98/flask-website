@@ -1,5 +1,3 @@
-
-from watchlist import app
 aiohttp==3.8.4
 aiosignal==1.3.1
 asgiref==3.7.2
