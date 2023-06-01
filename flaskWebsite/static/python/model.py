@@ -1,5 +1,5 @@
-from static.python.main import *
-from static.python.config import *
+from flaskWebsite.static.python.main import *
+from flaskWebsite.static.python.config import *
 import torch.nn as nn
 
 class PoetryModel(nn.Module):

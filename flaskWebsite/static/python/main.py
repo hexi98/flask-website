@@ -3,10 +3,10 @@ import numpy as np
 from torch.utils.data import DataLoader
 from torch import optim
 from torch import nn
-from static.python.model import *
+from flaskWebsite.static.python.model import *
 from torchnet import meter
 import tqdm
-from static.python.config import *
+from flaskWebsite.static.python.config import *
 from test import *
 
 def train():
