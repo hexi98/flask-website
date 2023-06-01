@@ -23,7 +23,7 @@
 
         function callPythonAPI(data){
             document.getElementById("generate-peom").innerHTML = "诗词生成中..."
-            fetch('http://127.0.0.1:5000/test/'+data ,{
+            fetch('http://127.0.0.1:5001/test/'+data ,{
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json'
